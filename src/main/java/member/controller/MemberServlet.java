@@ -91,6 +91,8 @@ public class MemberServlet extends HttpServlet {
 			req.setAttribute("memVO", memVO); 
 			String url = "/member/update_mem_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);
+//			RequestDispatcher DBR = req.getRequestDispatcher("/DBReader");
+//			DBR.include(req, res);
 			successView.forward(req, res);
 		}
 		
@@ -141,17 +143,26 @@ public class MemberServlet extends HttpServlet {
 			java.sql.Date member_birthday = java.sql.Date.valueOf(req.getParameter("member_birthday").trim());
 			
 			String member_img = req.getParameter("member_img".trim());
-		
-
-	
+			
+//			System.out.println(member_img);	
+//			String realPath = getServletContext().getRealPath(member_img);
+//			
+//			File img = new File(realPath);
+//			InputStream ins = new FileInputStream(img);
+//			ByteArrayOutputStream ops = new ByteArrayOutputStream();
+//			
+//			byte[] buf = new byte[ins.available()];
+//			
+//			System.out.println(buf);
+			
 			MemberVO memVO = new MemberVO();
 			
+			memVO.setMember_id(member_id);
 			memVO.setMember_name(member_name);
 			memVO.setMember_account(member_account);
 			memVO.setMember_password(member_password);
 			memVO.setMember_email(member_email);
-			memVO.setMember_phone(member_phone);
-			memVO.setMember_id(member_id);
+			memVO.setMember_phone(member_phone);			
 			memVO.setMember_address(member_address);
 			memVO.setMember_state(member_state);
 			memVO.setMember_gender(member_gender);

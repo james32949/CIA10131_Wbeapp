@@ -51,14 +51,16 @@
 		<servlet-name>MemberServlet</servlet-name>
 		<url-pattern>/member/member.do</url-pattern>
 	</servlet-mapping>
+	
+<!-- 
 
 	<servlet>
 		<servlet-name>DBReader</servlet-name>
-		<servlet-class>memberHB.DBReader</servlet-class>
+		<servlet-class>member.controller.DBReader</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DBReader</servlet-name>
 		<url-pattern>/DBReader</url-pattern>
 	</servlet-mapping>
-
+  --> 
 </web-app>

@@ -142,27 +142,16 @@
 
 
 </table>
-<div id="preview"><img width=100% src="${pageContext.request.contextPath}/DBReader"></div>
+
 <br>
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="member_id" value="<%=memVO.getMember_id() %>">
-<input type="submit" value="送出資料"></FORM>
+<input type="submit" value="送出資料">
+</FORM>
 
-<script>
-	var div_preview = document.getElementById("preview"); 
-	var but_p_file = document.getElementById("p_file");
-	var preview_span=`<span class="text">預覽圖</span>`;
-	but_p_file.addEventListener("change",function(){ 
 
-  		var reader = new FileReader();    
-  		reader.readAsDataURL(this.files[0]);
- 
-  		reader.addEventListener("load",function(){
-    		let img_html = `<img class = "preview_img" src="${reader.resul}" >`;
-			div_preview.innerHTML = img_html;
-		})
-	})
-</script>
+<div id="preview"><img width=100% src="${pageContext.request.contextPath}/DBReader?member_id=<%=memVO.getMember_id() %>"></div>
+
 
 </body>
 
