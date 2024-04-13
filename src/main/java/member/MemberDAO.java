@@ -1,5 +1,10 @@
 package member;
 
+import static common.Common.PASSWORD;
+import static common.Common.URL;
+import static common.Common.USER;
+import static common.Common.DRIVER;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,17 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
 public class MemberDAO implements MemberDAO_interface {
 	
-	String driver = "com.mysql.cj.jdbc.Driver";
-	String url = "jdbc:mysql://localhost:3306/test_member?useUnicode=yes&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Taipei";
-	String user = "root";
-	String password = "0000";
 	
 	private static final String INSER_STMT = "INSERT INTO member (member_name, member_account, member_password, member_email, member_phone, member_address, member_state, member_gender, member_birthday ,member_img)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String GET_ALL_STMT = "SELECT member_id,member_name,member_account,member_password,member_email,member_phone,member_address,member_state,member_gender,member_birthday,member_img FROM member";
@@ -33,8 +29,8 @@ public class MemberDAO implements MemberDAO_interface {
 		PreparedStatement pstmt = null;
 		
 		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, user, password);
+			Class.forName(DRIVER);
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(INSER_STMT);
 			
 			pstmt.setString(1, memberVO.getMember_name());
@@ -84,8 +80,8 @@ public class MemberDAO implements MemberDAO_interface {
 		
 
 		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, user, password);
+			Class.forName(DRIVER);
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(UPDATE);
 						
 			pstmt.setString(1,memberVO.getMember_name());
@@ -132,8 +128,8 @@ public class MemberDAO implements MemberDAO_interface {
 		PreparedStatement pstmt = null;
 
 		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, user, password);
+			Class.forName(DRIVER);
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(DELETE);
 
 			pstmt.setInt(1, member_id);
@@ -173,8 +169,8 @@ public class MemberDAO implements MemberDAO_interface {
 		ResultSet rs = null;
 
 		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, user, password);
+			Class.forName(DRIVER);
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(GET_ONE_STMT);
 
 			pstmt.setInt(1, member_id);
@@ -235,8 +231,8 @@ public class MemberDAO implements MemberDAO_interface {
 		ResultSet rs = null;
 
 		try {
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, user, password);
+			Class.forName(DRIVER);
+			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(GET_ALL_STMT);
 			rs = pstmt.executeQuery();
 

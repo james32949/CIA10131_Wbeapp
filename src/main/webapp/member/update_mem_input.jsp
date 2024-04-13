@@ -93,7 +93,7 @@
 	</tr>
 	<tr>
 		<td>會員姓名:</td>
-		<td><input type="TEXT" name="member_name" value="<%=memVO.getMember_name() %>" size="45"/></td>
+		<td><input type="TEXT" name="member_name" value="<%= (memVO==null)? " " : memVO.getMember_name()%>" size="45"/></td>
 	</tr>
 	<tr>
 		<td>會員帳號:</td>
@@ -134,7 +134,7 @@
 	
 	<tr>
 		<td>圖片:</td>
-		<td><input type="file" name="member_img" id="p_file" @change="previewObjectURL"/></td>
+		<td><input type="file" name="member_img" id="p_file" /></td>
 		
 	</tr>
 

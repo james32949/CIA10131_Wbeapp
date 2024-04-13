@@ -33,10 +33,10 @@ public class MemberVO {
 	@Column(name = "member_address")
 	private String memberAddress;
 	
-	@Column(name = "member_state")
+	@Column(name = "member_state", columnDefinition = "tinyint")
 	private Integer memberState;
 	
-	@Column(name = "member_gender")
+	@Column(name = "member_gender", columnDefinition = "bit")
 	private Integer memberGender;
 	
 	@Column(name = "member_birthday")

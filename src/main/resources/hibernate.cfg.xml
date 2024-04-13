@@ -19,7 +19,7 @@
         
         <property name="hibernate.format_sql">true</property>
         
-        <mapping class="testhibernate.TestHibernateVO"/>
+
         <mapping class="memberHB.MemberVO"/>
     </session-factory>
 </hibernate-configuration>

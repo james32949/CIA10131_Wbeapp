@@ -1,6 +1,16 @@
 package member.controller;
 
+import static common.Common.PASSWORD;
+import static common.Common.URL;
+import static common.Common.USER;
+
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.*;
 
 import javax.naming.Context;
@@ -110,6 +120,9 @@ public class MemberServlet extends HttpServlet {
 			Integer member_id = Integer.valueOf(req.getParameter("member_id").trim());
 
 			String member_name = req.getParameter("member_name");
+			
+			System.out.println(member_name+"!!");
+			
 			String enameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$";
 			if (member_name == null || member_name.trim().length() == 0) {
 				errorMsgs.add("會員姓名:請勿空白");
@@ -141,20 +154,8 @@ public class MemberServlet extends HttpServlet {
 			Integer member_gender = Integer.valueOf(req.getParameter("member_gender").trim());
 			
 			java.sql.Date member_birthday = java.sql.Date.valueOf(req.getParameter("member_birthday").trim());
-			
-			String member_img = req.getParameter("member_img".trim());
-			
-//			System.out.println(member_img);	
-//			String realPath = getServletContext().getRealPath(member_img);
-//			
-//			File img = new File(realPath);
-//			InputStream ins = new FileInputStream(img);
-//			ByteArrayOutputStream ops = new ByteArrayOutputStream();
-//			
-//			byte[] buf = new byte[ins.available()];
-//			
-//			System.out.println(buf);
-			
+						
+									
 			MemberVO memVO = new MemberVO();
 			
 			memVO.setMember_id(member_id);
@@ -187,12 +188,43 @@ public class MemberServlet extends HttpServlet {
 			String url = "/member/listOneMember.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneMember.jsp
 			successView.forward(req, res);
+			
+			/******************************圖片上傳*************************************************************/
+			String member_img= req.getParameter("member_img").trim();
+			System.out.println(member_img);
+
+			
+//			String sqlImg = "UPDATE  member SET member_img=? WHERE member_id=?;";
+//			try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
+//				String columns[] = { "member_img" };
+//				int employee_id = -1;
+//				try (PreparedStatement ps = connection.prepareStatement(sqlImg, columns);
+//						InputStream in = Files.newInputStream(Path.of("img/image.png"))) {;
+//					// 讀入圖檔後插入
+//					ps.setBinaryStream(1, in, in.available());
+//					ps.setInt(2, 1);
+//					
+//					System.out.println("上傳成功");
+//					
+//					int rowCount = ps.executeUpdate();
+//					/*
+//					 * 當Statement關閉，ResultSet也會自動關閉， 可以不需要將ResultSet宣告置入try with
+//					 * resources小括號內，參看ResultSet說明
+//					 */
+//					ResultSet rs = ps.getGeneratedKeys();
+//					if (rs.next()) {
+//						employee_id = rs.getInt(1);
+//						System.out.println(rowCount + " row inserted; employee ID: " + employee_id);
+//					}
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+
+			
 		}
 
-		
-		
-		
-		
+		/*********************************************************************************************************/	
 		
 		if ("insert".equals(action)) { // 來自addMember
 
