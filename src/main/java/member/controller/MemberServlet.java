@@ -1,23 +1,17 @@
 package member.controller;
 
-import static common.Common.PASSWORD;
-import static common.Common.URL;
-import static common.Common.USER;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import javax.naming.Context;
-import javax.servlet.*;
-import javax.servlet.http.*;
-
-import member.*;
+import member.MemberService;
+import member.MemberVO;
 
 public class MemberServlet extends HttpServlet {
 
@@ -119,8 +113,6 @@ public class MemberServlet extends HttpServlet {
 
 			String member_name = req.getParameter("member_name");
 			
-			System.out.println(member_name+"!!");
-			
 			String enameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,10}$";
 			if (member_name == null || member_name.trim().length() == 0) {
 				errorMsgs.add("會員姓名:請勿空白");
@@ -143,6 +135,8 @@ public class MemberServlet extends HttpServlet {
 				errorMsgs.add("電話請勿空白");
 			}
 			
+			String member_account = req.getParameter("member_account").trim();
+			
 			String member_address = req.getParameter("member_address").trim();
 			
 			Integer member_state = Integer.valueOf(req.getParameter("member_state").trim());
@@ -155,7 +149,7 @@ public class MemberServlet extends HttpServlet {
 			
 			memVO.setMember_id(member_id);
 			memVO.setMember_name(member_name);
-
+			memVO.setMember_account(member_account);
 			memVO.setMember_password(member_password);
 			memVO.setMember_email(member_email);
 			memVO.setMember_phone(member_phone);			
@@ -169,24 +163,16 @@ public class MemberServlet extends HttpServlet {
 
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
-					
-
-				/*************************** 2.查詢 ****************************************/
-				MemberService memSvc = new MemberService();
-				MemberVO memVO2 = memSvc.getOneMember(member_id);
-
-				/*************************** 3.查詢完成 準備轉移(Send the Success view) ************/
-				req.setAttribute("memVO", memVO2); 
-				/******************************************************************************/
-				
+				req.setAttribute("memVO", memVO); 
 				RequestDispatcher failureView = req.getRequestDispatcher("/member/update_mem_input.jsp");
 				failureView.forward(req, res);
 				return; // 程式中斷
 			}
 
 			/*************************** 2.開始修改資料*****************************************/
+			
 			MemberService memSvc = new MemberService();
-			memVO = memSvc.updateMember(member_name, member_password, member_email, member_phone, member_address, member_state, member_gender, member_birthday, null, member_id);
+			MemberVO memVOUP = memSvc.updateMember(member_name, member_password, member_email, member_phone, member_address, member_state, member_gender, member_birthday, null, member_id);
 
 			/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 			req.setAttribute("memVO", memVO); // 資料庫update成功後,正確的的empVO物件,存入req
@@ -195,8 +181,8 @@ public class MemberServlet extends HttpServlet {
 			successView.forward(req, res);
 			
 			/******************************圖片上傳*************************************************************/
-			String member_img= req.getParameter("member_img").trim();
-			System.out.println(member_img);
+//			String member_img= req.getParameter("member_img").trim();
+//			System.out.println(member_img);
 
 			
 //			String sqlImg = "UPDATE  member SET member_img=? WHERE member_id=?;";

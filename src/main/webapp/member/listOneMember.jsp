@@ -3,7 +3,7 @@
 <%-- 此頁暫練習採用 Script 的寫法取值 --%>
 
 <% 
-MemberVO memVO = (MemberVO) request.getAttribute("memVO"); //EmpServlet.java(Concroller), 存入req的empVO物件
+MemberVO memVO = (MemberVO) request.getAttribute("memVO");//EmpServlet.java(Concroller), 存入req的empVO物件
 %>
 
 <html>
@@ -50,7 +50,7 @@ MemberVO memVO = (MemberVO) request.getAttribute("memVO"); //EmpServlet.java(Con
 <table id="table-1">
 	<tr><td>
 		 <h3>--會員資料--</h3>
-		 <h4><a href="select_page.jsp"><img src="images/back1.gif" width="100" height="32" border="0">回首頁</a></h4>
+		 <h4><a href="select_page.jsp">回首頁</a></h4>
 	</td></tr>
 </table>
 

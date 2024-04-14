@@ -97,7 +97,8 @@
 	</tr>
 	<tr>
 		<td>會員帳號:</td>
-		<td><%=memVO.getMember_account() %></td>
+		<td><%=memVO.getMember_account() %><input type="TEXT" name="member_account" value="<%= (memVO==null)?" " : memVO.getMember_account()%>" size="45" hidden/></td>
+		
 	</tr>
 	<tr>
 		<td>會員密碼:</td>
