@@ -31,14 +31,14 @@ public class MemberService {
 		
 	}
 	
-	public MemberVO updateMember(String member_name,String member_account, String member_password, String member_email,
+	public MemberVO updateMember(String member_name, String member_password, String member_email,
 			String member_phone,String member_address, Integer member_state,Integer member_gender, java.sql.Date member_birthday, byte[] member_img, Integer member_id) {
 		
 		MemberVO memberVO = new MemberVO();
 		
 		
 		memberVO.setMember_name(member_name);
-		memberVO.setMember_account(member_account);
+
 		memberVO.setMember_password(member_password);
 		memberVO.setMember_email(member_email);
 		memberVO.setMember_phone(member_phone);

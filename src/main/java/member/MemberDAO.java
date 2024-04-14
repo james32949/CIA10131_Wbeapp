@@ -20,7 +20,7 @@ public class MemberDAO implements MemberDAO_interface {
 	private static final String GET_ALL_STMT = "SELECT member_id,member_name,member_account,member_password,member_email,member_phone,member_address,member_state,member_gender,member_birthday,member_img FROM member";
 	private static final String GET_ONE_STMT = "SELECT member_id,member_name,member_account,member_password,member_email,member_phone,member_address,member_state,member_gender,member_birthday,member_img FROM member WHERE member_id =?";
 	private static final String DELETE = "DELETE FROM member WHERE member_id =?";
-	private static final String UPDATE = "UPDATE member set member_name=?,member_account=?,member_password=?,member_email=?,member_phone=?,member_address=?,member_state=?, member_gender=?,member_birthday=? WHERE member_id=?";
+	private static final String UPDATE = "UPDATE member set member_name=?,member_password=?,member_email=?,member_phone=?,member_address=?,member_state=?, member_gender=?,member_birthday=? WHERE member_id=?";
 
 	@Override
 	public void insert(MemberVO memberVO) {
@@ -85,15 +85,14 @@ public class MemberDAO implements MemberDAO_interface {
 			pstmt = con.prepareStatement(UPDATE);
 						
 			pstmt.setString(1,memberVO.getMember_name());
-			pstmt.setString(2,memberVO.getMember_account());
-			pstmt.setString(3,memberVO.getMember_password());
-			pstmt.setString(4,memberVO.getMember_email());
-			pstmt.setString(5,memberVO.getMember_phone());
-			pstmt.setString(6,memberVO.getMember_address());
-			pstmt.setInt(7,memberVO.getMember_state());
-			pstmt.setInt(8,memberVO.getMember_gender());
-			pstmt.setDate(9,memberVO.getMember_birthday());
-			pstmt.setInt(10,memberVO.getMember_id());
+			pstmt.setString(2,memberVO.getMember_password());
+			pstmt.setString(3,memberVO.getMember_email());
+			pstmt.setString(4,memberVO.getMember_phone());
+			pstmt.setString(5,memberVO.getMember_address());
+			pstmt.setInt(6,memberVO.getMember_state());
+			pstmt.setInt(7,memberVO.getMember_gender());
+			pstmt.setDate(8,memberVO.getMember_birthday());
+			pstmt.setInt(9,memberVO.getMember_id());
 			
 			pstmt.executeUpdate();
 

@@ -93,38 +93,38 @@
 	</tr>
 	<tr>
 		<td>會員姓名:</td>
-		<td><input type="TEXT" name="member_name" value="<%= (memVO==null)? " " : memVO.getMember_name()%>" size="45"/></td>
+		<td><input type="TEXT" name="member_name" value="<%= (memVO==null)?" " : memVO.getMember_name()%>" size="45"/></td>
 	</tr>
 	<tr>
 		<td>會員帳號:</td>
-		<td><input type="TEXT" name="member_account" value="<%=memVO.getMember_account() %>" size="45" /></td>
+		<td><%=memVO.getMember_account() %></td>
 	</tr>
 	<tr>
 		<td>會員密碼:</td>
-		<td><input type="TEXT" name="member_password"   value="<%=memVO.getMember_password() %>" size="45"/></td>
+		<td><input type="TEXT" name="member_password"   value="<%= (memVO==null)?" " : memVO.getMember_password() %>" size="45"/></td>
 	</tr>
 	
 	<tr>
 		<td>信箱:</td>
-		<td><input type="TEXT" name="member_email" value="<%=memVO.getMember_email() %>" size="45"/></td> 
+		<td><input type="TEXT" name="member_email" value="<%= (memVO==null)?" " : memVO.getMember_email() %>" size="45"/></td> 
 	</tr>
 	<tr>
 		<td>電話:</td>
-		<td><input type="TEXT" name="member_phone"   value="<%=memVO.getMember_phone() %>" size="45"/></td>
+		<td><input type="TEXT" name="member_phone"   value="<%= (memVO==null)?" " : memVO.getMember_phone() %>" size="45"/></td>
 	</tr>
 	<tr>
 		<td>地址:</td>
-		<td><input type="TEXT" name="member_address"  value="<%=memVO.getMember_address() %>" size="45"/></td>
+		<td><input type="TEXT" name="member_address"  value="<%= (memVO==null)?" " : memVO.getMember_address() %>" size="45"/></td>
 	</tr>
 	
 	<tr>
 		<td>狀態:</td>
-		<td><input type="TEXT" name="member_state"  value="<%=memVO.getMember_state() %>" size="45"/></td>
+		<td><input type="TEXT" name="member_state"  value="<%= (memVO==null)?" " : memVO.getMember_state() %>" size="45"/></td>
 	</tr>
 	
 	<tr>
 		<td>性別:</td>
-		<td><input type="TEXT" name="member_gender"  value="<%=memVO.getMember_gender() %>" size="45"/></td>
+		<td><input type="TEXT" name="member_gender"  value="<%= (memVO==null)?" " : memVO.getMember_gender() %>" size="45"/></td>
 	</tr>
 	
 	<tr>
@@ -145,12 +145,12 @@
 
 <br>
 <input type="hidden" name="action" value="update">
-<input type="hidden" name="member_id" value="<%=memVO.getMember_id() %>">
+<input type="hidden" name="member_id" value="<%= (memVO==null)?" " : memVO.getMember_id() %>">
 <input type="submit" value="送出資料">
 </FORM>
 
 
-<div id="preview"><img width=100% src="${pageContext.request.contextPath}/DBReader?member_id=<%=memVO.getMember_id() %>"></div>
+<div id="preview"><img width=100% src="${pageContext.request.contextPath}/DBReader?member_id=<%= (memVO==null)?" " : memVO.getMember_id() %>"></div>
 
 
 </body>
@@ -179,15 +179,12 @@
  	       timepicker:false,       //timepicker:true,
  	       step: 1,                //step: 60
  	       format:'Y-m-d',         //format:'Y-m-d H:i:s',
- 		   value: '<%=memVO.getMember_birthday()%>', // value:   new Date(),
+ 		   value: '<%= (memVO==null)?" " : memVO.getMember_birthday()%>', // value:   new Date(),
            //disabledDates:        ['2017/06/08','2017/06/09','2017/06/10'], 
            //startDate:	            '2017/07/10',  
            //minDate:               '-1970-01-01', 
            //maxDate:               '+1970-01-01'  
         });
-        
-        //----------------------------------------------------------------------------------------------------------------------------------------
-   		
       
 </script>
 </html>

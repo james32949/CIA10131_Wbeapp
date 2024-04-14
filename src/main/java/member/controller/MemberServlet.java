@@ -101,8 +101,6 @@ public class MemberServlet extends HttpServlet {
 			req.setAttribute("memVO", memVO); 
 			String url = "/member/update_mem_input.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);
-//			RequestDispatcher DBR = req.getRequestDispatcher("/DBReader");
-//			DBR.include(req, res);
 			successView.forward(req, res);
 		}
 		
@@ -130,8 +128,6 @@ public class MemberServlet extends HttpServlet {
 				errorMsgs.add("會員姓名:只能是中、英文字母、數字和_ 且長度在2~10之間");
 			}
 			
-			String member_account = req.getParameter("member_account").trim();
-			
 			String member_password = req.getParameter("member_password").trim();
 			if (member_password == null || member_password.trim().length() == 0) {
 				errorMsgs.add("密碼請勿空白");
@@ -154,13 +150,12 @@ public class MemberServlet extends HttpServlet {
 			Integer member_gender = Integer.valueOf(req.getParameter("member_gender").trim());
 			
 			java.sql.Date member_birthday = java.sql.Date.valueOf(req.getParameter("member_birthday").trim());
-						
-									
+												
 			MemberVO memVO = new MemberVO();
 			
 			memVO.setMember_id(member_id);
 			memVO.setMember_name(member_name);
-			memVO.setMember_account(member_account);
+
 			memVO.setMember_password(member_password);
 			memVO.setMember_email(member_email);
 			memVO.setMember_phone(member_phone);			
@@ -168,12 +163,22 @@ public class MemberServlet extends HttpServlet {
 			memVO.setMember_state(member_state);
 			memVO.setMember_gender(member_gender);
 			memVO.setMember_birthday(member_birthday);
-			
+
 			
 /*********************************************************************************************************************************/			
 
 			// Send the use back to the form, if there were errors
 			if (!errorMsgs.isEmpty()) {
+					
+
+				/*************************** 2.查詢 ****************************************/
+				MemberService memSvc = new MemberService();
+				MemberVO memVO2 = memSvc.getOneMember(member_id);
+
+				/*************************** 3.查詢完成 準備轉移(Send the Success view) ************/
+				req.setAttribute("memVO", memVO2); 
+				/******************************************************************************/
+				
 				RequestDispatcher failureView = req.getRequestDispatcher("/member/update_mem_input.jsp");
 				failureView.forward(req, res);
 				return; // 程式中斷
@@ -181,7 +186,7 @@ public class MemberServlet extends HttpServlet {
 
 			/*************************** 2.開始修改資料*****************************************/
 			MemberService memSvc = new MemberService();
-			memVO = memSvc.updateMember(member_name, member_account, member_password, member_email, member_phone, member_address, member_state, member_gender, member_birthday, null, member_id);
+			memVO = memSvc.updateMember(member_name, member_password, member_email, member_phone, member_address, member_state, member_gender, member_birthday, null, member_id);
 
 			/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
 			req.setAttribute("memVO", memVO); // 資料庫update成功後,正確的的empVO物件,存入req
