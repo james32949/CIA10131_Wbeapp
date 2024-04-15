@@ -354,4 +354,10 @@ public class MemberJDBCAO implements MemberDAO_interface {
 
 	}
 
+	@Override
+	public void upimage(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

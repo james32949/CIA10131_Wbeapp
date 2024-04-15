@@ -85,7 +85,7 @@
 	</ul>
 </c:if>
 
-<FORM METHOD="post" ACTION="member.do" name="form1">
+<FORM METHOD="post" ACTION="member.do" name="form1" >
 <table>
 	<tr>
 		<td>會員編號:</td>
@@ -132,14 +132,6 @@
 		<td>生日:</td>
 		<td><input name="member_birthday" id="f_date1" size="45"/></td>
 	</tr>
-	
-	<tr>
-		<td>圖片:</td>
-		<td><input type="file" name="member_img" id="p_file" /></td>
-		
-	</tr>
-
-
 
 
 </table>
@@ -150,6 +142,16 @@
 <input type="submit" value="送出資料">
 </FORM>
 
+<form method="post" action="member.do" name="Upimage" enctype="multipart/form-data">
+
+		<p>圖片:</p>
+		<input type="hidden" name="action" value="Upimage">
+		<input type="hidden" name="member_id" value="<%= (memVO==null)?" " : memVO.getMember_id() %>">		
+		<input type="file" name="member_img"/>
+		<input type="submit" value="送出圖片">
+		
+		
+</form>
 
 <div id="preview"><img width=100% src="${pageContext.request.contextPath}/DBReader?member_id=<%= (memVO==null)?" " : memVO.getMember_id() %>"></div>
 

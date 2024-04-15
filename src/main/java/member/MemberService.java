@@ -32,7 +32,7 @@ public class MemberService {
 	}
 	
 	public MemberVO updateMember(String member_name, String member_password, String member_email,
-			String member_phone,String member_address, Integer member_state,Integer member_gender, java.sql.Date member_birthday, byte[] member_img, Integer member_id) {
+			String member_phone,String member_address, Integer member_state,Integer member_gender, java.sql.Date member_birthday, Integer member_id) {
 		
 		MemberVO memberVO = new MemberVO();
 		
@@ -46,9 +46,21 @@ public class MemberService {
 		memberVO.setMember_state(member_state);
 		memberVO.setMember_gender(member_gender);
 		memberVO.setMember_birthday(member_birthday);
-		memberVO.setMember_img(member_img);
+
 		memberVO.setMember_id(member_id);
 		dao.update(memberVO);
+		
+		return memberVO;
+	}
+	
+	public MemberVO upImage(byte[] member_img, Integer member_id) {
+		
+		MemberVO memberVO = new MemberVO();
+		
+		memberVO.setMember_img(member_img);
+		memberVO.setMember_id(member_id);
+		
+		dao.upimage(memberVO);
 		
 		return memberVO;
 	}
