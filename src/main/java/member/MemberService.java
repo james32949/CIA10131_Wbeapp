@@ -10,70 +10,104 @@ public class MemberService {
 		dao = new MemberDAO();
 	}
 	
-	public MemberVO addMember(String member_name, String member_account, String member_password, String member_email,
-			String member_phone,String member_address, Integer member_state,Integer member_gender, java.sql.Date member_birthday, byte[] member_img) {
-		
+	public MemberVO addMember(String memberName, String memberAccount, String memberPassword, String memberEmail,
+			String memberPhone,String memberAddress, Integer memberState,Integer memberGender, java.sql.Date memberBirthday, byte[] memberImg) {
+	
 		MemberVO memberVO = new MemberVO();
 		
-		memberVO.setMember_name(member_name);
-		memberVO.setMember_account(member_account);
-		memberVO.setMember_password(member_password);
-		memberVO.setMember_email(member_email);
-		memberVO.setMember_phone(member_phone);
-		memberVO.setMember_address(member_address);
-		memberVO.setMember_state(member_state);
-		memberVO.setMember_gender(member_gender);
-		memberVO.setMember_birthday(member_birthday);
-		memberVO.setMember_img(member_img);
+		memberVO.setMemberName(memberName);
+		memberVO.setMemberAccount(memberAccount);
+		memberVO.setMemberPassword(memberPassword);
+		memberVO.setMemberEmail(memberEmail);
+		memberVO.setMemberPhone(memberPhone);
+		memberVO.setMemberAddress(memberAddress);
+		memberVO.setMemberState(memberState);
+		memberVO.setMemberGender(memberGender);
+		memberVO.setMemberBirthday(memberBirthday);
+		memberVO.setMemberImg(memberImg);
+		
 		dao.insert(memberVO);
 		
 		return memberVO;
-		
 	}
 	
-	public MemberVO updateMember(String member_name, String member_password, String member_email,
-			String member_phone,String member_address, Integer member_state,Integer member_gender, java.sql.Date member_birthday, Integer member_id) {
+	public MemberVO updateMember(String memberName, String memberPassword, String memberEmail,
+			String memberPhone,String memberAddress, Integer memberState,Integer memberGender, java.sql.Date memberBirthday, Integer memberId) {
 		
 		MemberVO memberVO = new MemberVO();
 		
+		memberVO.setMemberName(memberName);
+		memberVO.setMemberPassword(memberPassword);
+		memberVO.setMemberEmail(memberEmail);
+		memberVO.setMemberPhone(memberPhone);
+		memberVO.setMemberAddress(memberAddress);
+		memberVO.setMemberState(memberState);
+		memberVO.setMemberGender(memberGender);
+		memberVO.setMemberBirthday(memberBirthday);
+		memberVO.setMemberId(memberId);
 		
-		memberVO.setMember_name(member_name);
-
-		memberVO.setMember_password(member_password);
-		memberVO.setMember_email(member_email);
-		memberVO.setMember_phone(member_phone);
-		memberVO.setMember_address(member_address);
-		memberVO.setMember_state(member_state);
-		memberVO.setMember_gender(member_gender);
-		memberVO.setMember_birthday(member_birthday);
-
-		memberVO.setMember_id(member_id);
 		dao.update(memberVO);
 		
 		return memberVO;
 	}
 	
-	public MemberVO upImage(byte[] member_img, Integer member_id) {
+	public MemberVO upImage(byte[] memberImg, Integer memberId) {
 		
 		MemberVO memberVO = new MemberVO();
 		
-		memberVO.setMember_img(member_img);
-		memberVO.setMember_id(member_id);
+		memberVO.setMemberImg(memberImg);
+		memberVO.setMemberId(memberId);
 		
 		dao.upimage(memberVO);
 		
 		return memberVO;
 	}
 	
-	public void deleteMember(Integer member_id) {
-		dao.delete(member_id);
+	public void deleteMember(Integer memberId) {
+		dao.delete(memberId);
 	}
 	
-	public MemberVO getOneMember(Integer member_id) {
-		return dao.findByPrimaryKey(member_id);
+	public MemberVO getOneMember(Integer memberId) {
+		return dao.findByPrimaryKey(memberId);
 	}
 	
 	public List<MemberVO> getAll(){
 		return dao.getAll();
 	}
+	public List<MemberVO> query(String memberName, String memberPhone, String memberEmail){
+		
+		MemberVO memberVO = new MemberVO();
+		
+		memberVO.setMemberName(memberName);
+		memberVO.setMemberPhone(memberPhone);
+		memberVO.setMemberEmail(memberEmail);
+		
+		
+		
+		List<MemberVO> list = dao.query(memberVO);
+		
+		return list;
+	}
+	
+	public MemberVO upState(Integer memberState, Integer memberId) {
+		
+//		System.out.println("Service:State="+memberState);
+//		System.out.println("Service:ID="+memberId);
+		
+		MemberVO memberVO = new MemberVO();
+		
+		memberVO.setMemberState(memberState);
+		memberVO.setMemberId(memberId);
+		
+		dao.upState(memberState,memberId);
+		
+		return memberVO;
+	}
+
+	public List<Object[]> findByAccount(String account) {			
+		return dao.findByAccount(account);
+	}
+	
+
+	
 }

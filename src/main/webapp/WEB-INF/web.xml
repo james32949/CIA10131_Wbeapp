@@ -45,12 +45,14 @@
 
 	<servlet>
 		<servlet-name>MemberServlet</servlet-name>
-		<servlet-class>member.controller.MemberServlet</servlet-class>
+		<servlet-class>member.MemberServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MemberServlet</servlet-name>
-		<url-pattern>/member/member.do</url-pattern>
+		<url-pattern>/QueryMember</url-pattern>
 	</servlet-mapping>
+	
+
 	
 <!-- 
 

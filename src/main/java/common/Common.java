@@ -2,7 +2,7 @@ package common;
 
 public class Common {
 	// MySQL 8之後連線URL需加上SSL與時區設定
-	public final static String URL = "jdbc:mysql://localhost:3306/test_member?serverTimezone=Asia/Taipei";
+	public final static String URL = "jdbc:mysql://localhost:3306/joyfulresort?serverTimezone=Asia/Taipei";
 	// MySQL 8之前
 	// public final static String URL = "jdbc:mysql://localhost:3306/bookshop_jdbc";
 	

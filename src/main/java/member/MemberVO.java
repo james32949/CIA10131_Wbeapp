@@ -1,114 +1,145 @@
 package member;
 
+
 import java.sql.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 
-public class MemberVO implements java.io.Serializable {
+@Entity
+@Table(name = "member")
+public class MemberVO {
+	@Id	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "member_id")
+	private Integer memberId;
 	
-	private Integer member_id;
-
-	private String member_name;
-	private String member_account;
-	private String member_password;
-	private String member_email;
-	private String member_phone;
-	private String member_address;
-	private Integer member_state;
-	private Integer member_gender;
-	private Date member_birthday;
-	private byte[] member_img;
+	@Column(name = "member_name")
+	private String memberName;
+	
+	@Column(name = "member_account")
+	private String memberAccount;
+	
+	@Column(name = "member_password")
+	private String memberPassword;
+	
+	@Column(name = "member_email")
+	private String memberEmail;
+	
+	@Column(name = "member_phone")
+	private String memberPhone;
+	
+	@Column(name = "member_address")
+	private String memberAddress;
+	
+	@Column(name = "member_state", columnDefinition = "tinyint")
+	private Integer memberState;
+	
+	@Column(name = "member_gender", columnDefinition = "bit")
+	private Integer memberGender;
+	
+	@Column(name = "member_birthday")
+	private Date memberBirthday;
+	
+	@Lob 
+	@Column(name = "member_img", columnDefinition = "blob")
+	private byte[] memberImg;
 
 	public MemberVO() {
 		super();
 	}
 
-	public Integer getMember_id() {
-		return member_id;
+	public Integer getMemberId() {
+		return memberId;
 	}
 
-	public void setMember_id(Integer member_id) {
-		this.member_id = member_id;
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
 	}
 
-	public String getMember_name() {
-		return member_name;
+	public String getMemberName() {
+		return memberName;
 	}
 
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
-	public String getMember_account() {
-		return member_account;
+	public String getMemberAccount() {
+		return memberAccount;
 	}
 
-	public void setMember_account(String member_account) {
-		this.member_account = member_account;
+	public void setMemberAccount(String memberAccount) {
+		this.memberAccount = memberAccount;
 	}
 
-	public String getMember_password() {
-		return member_password;
+	public String getMemberPassword() {
+		return memberPassword;
 	}
 
-	public void setMember_password(String member_password) {
-		this.member_password = member_password;
+	public void setMemberPassword(String memberPassword) {
+		this.memberPassword = memberPassword;
 	}
 
-	public String getMember_email() {
-		return member_email;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
 
-	public void setMember_email(String member_email) {
-		this.member_email = member_email;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
 
-	public String getMember_phone() {
-		return member_phone;
+	public String getMemberPhone() {
+		return memberPhone;
 	}
 
-	public void setMember_phone(String member_phone) {
-		this.member_phone = member_phone;
+	public void setMemberPhone(String memberPhone) {
+		this.memberPhone = memberPhone;
 	}
 
-	public String getMember_address() {
-		return member_address;
+	public String getMemberAddress() {
+		return memberAddress;
 	}
 
-	public void setMember_address(String member_address) {
-		this.member_address = member_address;
+	public void setMemberAddress(String memberAddress) {
+		this.memberAddress = memberAddress;
 	}
 
-	public Integer getMember_state() {
-		return member_state;
+	public Integer getMemberState() {
+		return memberState;
 	}
 
-	public void setMember_state(Integer member_state) {
-		this.member_state = member_state;
+	public void setMemberState(Integer memberState) {
+		this.memberState = memberState;
 	}
 
-	public Integer getMember_gender() {
-		return member_gender;
+	public Integer getMemberGender() {
+		return memberGender;
 	}
 
-	public void setMember_gender(Integer memder_gender) {
-		this.member_gender = memder_gender;
+	public void setMemberGender(Integer memberGender) {
+		this.memberGender = memberGender;
 	}
 
-	public Date getMember_birthday() {
-		return member_birthday;
+	public Date getMemberBirthday() {
+		return memberBirthday;
 	}
 
-	public void setMember_birthday(Date member_barthday) {
-		this.member_birthday = member_barthday;
+	public void setMemberBirthday(Date memberBirthday) {
+		this.memberBirthday = memberBirthday;
 	}
 
-	public byte[] getMember_img() {
-		return member_img;
+	public byte[] getMemberImg() {
+		return memberImg;
 	}
 
-	public void setMember_img(byte[] member_img) {
-		this.member_img = member_img;
+	public void setMemberImg(byte[] memberImg) {
+		this.memberImg = memberImg;
 	}
 
 }
