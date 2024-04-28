@@ -30,8 +30,107 @@ public class MemberServlet extends HttpServlet {
 			break;
 		case "checkState":
 			forwardPath = checkState(req, res);
+			break;
+		case "queryMember":
+			forwardPath = queryMember(req, res);
+			break;
 		}
 		
+	}
+
+	private String queryMember(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		res.setContentType("application/json; charset=UTF-8");
+		String inputName = req.getParameter("memberName").trim();
+		String inputPhone = req.getParameter("memberPhone").trim();
+		String inputEmail = req.getParameter("memberEmail").trim();
+				
+		System.out.println(inputName);
+//		System.out.println(inputPhone);
+//		System.out.println(inputEmail);
+		if(!inputName.isEmpty()) {
+			
+			MemberService memSvc = new MemberService();
+			List<MemberVO> memberVO = memSvc.query(inputName, null, null);
+
+			JSONArray objs = new JSONArray();
+			
+			for(MemberVO mem : memberVO) {
+				JSONObject obj = new JSONObject();
+				obj.put("memberId", mem.getMemberId());
+				obj.put("memberName", mem.getMemberName());
+				obj.put("memberAccount", mem.getMemberAccount());
+				obj.put("memberEmail", mem.getMemberEmail());
+				obj.put("memberPhone", mem.getMemberPhone());
+				obj.put("memberAddress", mem.getMemberAddress());
+				obj.put("memberGender", mem.getMemberGender());
+				obj.put("memberBirthday", mem.getMemberBirthday());
+				obj.put("memberState", mem.getMemberState());
+				
+				objs.put(obj);
+			}
+			
+			System.out.println(objs);
+			res.getWriter().print(objs);
+			
+		}
+		if(!inputPhone.isEmpty()) {
+			
+			MemberService memSvc = new MemberService();
+			List<MemberVO> memberVO = memSvc.query(null, inputPhone, null);
+
+			JSONArray objs = new JSONArray();
+			
+			for(MemberVO mem : memberVO) {
+				JSONObject obj = new JSONObject();
+				obj.put("memberId", mem.getMemberId());
+				obj.put("memberName", mem.getMemberName());
+				obj.put("memberAccount", mem.getMemberAccount());
+				obj.put("memberEmail", mem.getMemberEmail());
+				obj.put("memberPhone", mem.getMemberPhone());
+				obj.put("memberAddress", mem.getMemberAddress());
+				obj.put("memberGender", mem.getMemberGender());
+				obj.put("memberBirthday", mem.getMemberBirthday());
+				obj.put("memberState", mem.getMemberState());
+				
+				objs.put(obj);
+			}
+			
+			System.out.println(objs);
+			res.getWriter().print(objs);
+
+		}
+		if(!inputEmail.isEmpty()) {
+			
+			MemberService memSvc = new MemberService();
+			List<MemberVO> memberVO = memSvc.query(null, null, inputEmail);
+
+			JSONArray objs = new JSONArray();
+			
+			for(MemberVO mem : memberVO) {
+				JSONObject obj = new JSONObject();
+				obj.put("memberId", mem.getMemberId());
+				obj.put("memberName", mem.getMemberName());
+				obj.put("memberAccount", mem.getMemberAccount());
+				obj.put("memberEmail", mem.getMemberEmail());
+				obj.put("memberPhone", mem.getMemberPhone());
+				obj.put("memberAddress", mem.getMemberAddress());
+				obj.put("memberGender", mem.getMemberGender());
+				obj.put("memberBirthday", mem.getMemberBirthday());
+				obj.put("memberState", mem.getMemberState());
+				
+				objs.put(obj);
+			}
+			
+			System.out.println(objs);
+			res.getWriter().print(objs);
+
+		}
+		
+		
+		
+		
+		
+		return null;
 	}
 
 	private String checkState(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{

@@ -23,6 +23,8 @@
 
 <link href="../static/css/style.css" rel="stylesheet">
 <link href="../static/css/QueryMember.css" >
+
+
 </head>
 <body>
 <div class="container-fluid position-relative bg-white d-flex p-0">
@@ -217,17 +219,15 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-light rounded-top p-4" style="align-items: flex-start;">
             <h1>會員查詢</h1>
-            <form>
                 <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">姓名查詢</span>
-                <input type="text" class="form-control" style="width: 10%;" placeholder="請輸入姓名">           
+                <input type="text" class="form-control" style="width: 10%;" id="queryMemberId" placeholder="請輸入姓名">           
                 <span class="input-group-text" id="basic-addon1">電話查詢</span>
-                <input type="text" class="form-control" style="width: 10%;" placeholder="請輸入手機後三碼">
+                <input type="text" class="form-control" style="width: 10%;" id="queryMemberPhone" placeholder="請輸入手機號碼">
                 <span class="input-group-text" id="basic-addon1">信箱查詢</span>
-                <input type="text" class="form-control" style="width: 15%;" placeholder="請輸入信箱 @之前的帳號名稱">
-                <button class="btn btn-secondary rounded-pill m-2">查詢</button>
-                </div>
-            </form>
+                <input type="text" class="form-control" style="width: 15%;" id="queryMemberEmail" placeholder="請輸入信箱">
+                <button id="buttonMemberQuery" class="btn btn-secondary rounded-pill m-2">查詢</button>
+                </div>   
         </div>
     </div>
 
@@ -235,26 +235,27 @@
 
     <div class="container-fluid pt-4 px-4">
         <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0" style="align-items: flex-start !important;">
-            <div class="col-md-6 text-center" style="width: 80%;">
-                <table class="table table-striped">
-                    <tr id="table_member" >
-                        <th>會員編號</th>
-                        <th>會員姓名</th>
-                        <th>會員帳號</th>
-                        <th>Email</th>
-                        <th>電話</th>
-                        <th>地址</th>
-                        <th>性別</th>
-                        <th>生日</th>
-                        <th>狀態</th>
-                        <td>狀態修改</td>
-                    </tr>
+            <div class="col-md-6 text-center" style="width: 90%;">
+                <table id="myTable" class="table table-striped">
+                    <thead id="thead_member">
+                        <tr>
+                            <th>會員編號</th>
+                            <th>會員姓名</th>
+                            <th>會員帳號</th>
+                            <th>Email</th>
+                            <th>電話</th>
+                            <th>地址</th>
+                            <th>性別</th>
+                            <th>生日</th>
+                            <th>狀態 </th>
+                            <th>狀態修改</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table_member">
 
+                    </tbody>
                 </table>
-
-
-
-
+                
 
             </div>
         </div>
@@ -274,11 +275,11 @@ Copyright &copy;
 </div>
 </div>
 
-</div>
+
 
 
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-</div>
+
 
 <script src="../static/js/jquery-3.7.1.js"></script>
 <script src="../static/js/bootstrap.bundle.min.js" type="f3b0939065fde96a75ea2bd3-text/javascript"></script>

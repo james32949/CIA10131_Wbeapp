@@ -22,18 +22,18 @@ $(document).ready(function(){ //ready事件 DOM載入完成後觸發
         let html =`
           <tr>
           <th>${data[i].memberId}</th>
-          <th>${data[i].memberName}</th>
-          <th>${data[i].memberAccount}</th>
-          <th>${data[i].memberEmail}</th>
-          <th>${data[i].memberPhone}</th>
-          <th>${data[i].memberAddress}</th>
-          <th>${(data[i].memberGender == 0)? "男":"女"}</th>
-          <th>${data[i].memberBirthday}</th>
-          <th style="color: ${(data[i].memberState == 2)? "red":(data[i].memberState == 0)? "gray":"green"}">${(data[i].memberState == 2)? "停權":(data[i].memberState == 0)? "未驗證":"已驗證"}</th>
-          <th><button id="button_State" class="${(data[i].memberState == 2)? "btn btn-primary rounded-pill m-2":"btn btn-danger rounded-pill m-2"}">${(data[i].memberState == 2)? "復原":"停權"}</button></th> 
+          <td>${data[i].memberName}</td>
+          <td>${data[i].memberAccount}</td>
+          <td>${data[i].memberEmail}</td>
+          <td>${data[i].memberPhone}</td>
+          <td>${data[i].memberAddress}</td>
+          <td>${(data[i].memberGender == 0)? "男":"女"}</td>
+          <td>${data[i].memberBirthday}</td>
+          <td style="color: ${(data[i].memberState == 2)? "red":(data[i].memberState == 0)? "gray":"green"}">${(data[i].memberState == 2)? "停權":(data[i].memberState == 0)? "未驗證":"已驗證"}</td>
+          <td><button id="button_State" style="line-height: 1;" class="${(data[i].memberState == 2)? "btn btn-primary rounded-pill m-2":"btn btn-danger rounded-pill m-2"}">${(data[i].memberState == 2)? "復原":"停權"}</button></td> 
           </tr>       
           `;
-          $("#table_member").after(html) //寫入
+          $("#table_member").prepend(html) //寫入
         })
       }
     }
@@ -64,15 +64,15 @@ $(document).on("click", "#button_State", function(){ //點擊修改按鈕
       let html =`
       <tr>
       <th>${data.memberId}</th>
-      <th>${data.memberName}</th>
-      <th>${data.memberAccount}</th>
-      <th>${data.memberEmail}</th>
-      <th>${data.memberPhone}</th>
-      <th>${data.memberAddress}</th>
-      <th>${(data.memberGender == 0)? "男":"女"}</th>
-      <th>${data.memberBirthday}</th>
-      <th style="color: ${(data.memberState == 2)? "red":(data.memberState == 0)? "gray":"green"}">${(data.memberState == 2)? "停權":(data.memberState == 0)? "未驗證":"已驗證"}</th>
-      <th><button id="button_State" class="${(data.memberState == 2)? "btn btn-primary rounded-pill m-2":"btn btn-danger rounded-pill m-2"}">${(data.memberState == 2)? "復原":"停權"}</button></th> 
+      <td>${data.memberName}</td>
+      <td>${data.memberAccount}</td>
+      <td>${data.memberEmail}</td>
+      <td>${data.memberPhone}</td>
+      <td>${data.memberAddress}</td>
+      <td>${(data.memberGender == 0)? "男":"女"}</td>
+      <td>${data.memberBirthday}</td>
+      <td style="color: ${(data.memberState == 2)? "red":(data.memberState == 0)? "gray":"green"}">${(data.memberState == 2)? "停權":(data.memberState == 0)? "未驗證":"已驗證"}</td>
+      <td><button id="button_State" style="line-height: 1;" class="${(data.memberState == 2)? "btn btn-primary rounded-pill m-2":"btn btn-danger rounded-pill m-2"}">${(data.memberState == 2)? "復原":"停權"}</button></td> 
       </tr>      
       `;
 
@@ -80,4 +80,90 @@ $(document).on("click", "#button_State", function(){ //點擊修改按鈕
       currentRow.remove()
     }
   })
+})
+
+$(document).on("click", "#buttonMemberQuery", function(){ //點擊查詢按鈕
+  // console.log("OK!!");
+  //取值
+  let inputName = $("#queryMemberId").val();
+  let inputPheon = $("#queryMemberPhone").val();
+  let inputEmail = $("#queryMemberEmail").val();
+
+  // console.log(inputName);
+  // console.log(inputPheon);
+  // console.log(inputEmail);
+
+  $.post({
+    url:endPointURL,
+    data:{
+      "action":"queryMember",
+      "memberName":inputName,
+      "memberPhone":inputPheon,
+      "memberEmail":inputEmail
+    },
+    datatype:"json",
+    success:function(data){
+      $("#table_member").remove() 
+
+      $("#thead_member").after(`</tbody">`)
+      $("#thead_member").after(`<tbody id="table_member">`)
+
+      for(let i = (Object.keys(data).length)-1; i >= 0; i--){
+
+        //console.log(data[i].memberName)
+        $(function(){ //加入表格
+        let html =`
+
+          <tr>
+          <th>${data[i].memberId}</th>
+          <td>${data[i].memberName}</td>
+          <td>${data[i].memberAccount}</td>
+          <td>${data[i].memberEmail}</td>
+          <td>${data[i].memberPhone}</td>
+          <td>${data[i].memberAddress}</td>
+          <td>${(data[i].memberGender == 0)? "男":"女"}</td>
+          <td>${data[i].memberBirthday}</td>
+          <td style="color: ${(data[i].memberState == 2)? "red":(data[i].memberState == 0)? "gray":"green"}">${(data[i].memberState == 2)? "停權":(data[i].memberState == 0)? "未驗證":"已驗證"}</td>
+          <td><button id="button_State" style="line-height: 1;" class="${(data[i].memberState == 2)? "btn btn-primary rounded-pill m-2":"btn btn-danger rounded-pill m-2"}">${(data[i].memberState == 2)? "復原":"停權"}</button></td> 
+          </tr>
+      
+          `;
+
+          $("#table_member").append(html) //寫入
+
+        })
+      }
+
+    }
+  })
+
+
+})
+
+
+
+$("#queryMemberId, #queryMemberPhone, #queryMemberEmail").keydown(function(e){
+  // console.log(e.keyCode);
+  if(e.keyCode === 13){
+    // console.log("Enter");
+    $("#buttonMemberQuery").click();
+  }
+})
+
+$("#queryMemberId").focus(function(){
+
+  $("#queryMemberPhone").val("");
+  $("#queryMemberEmail").val("");
+})
+
+$("#queryMemberPhone").focus(function(){
+
+  $("#queryMemberId").val("");
+  $("#queryMemberEmail").val("");
+})
+
+$("#queryMemberEmail").focus(function(){
+
+  $("#queryMemberPhone").val("");
+  $("#queryMemberId").val("");
 })
