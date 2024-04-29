@@ -34,7 +34,61 @@ public class MemberServlet extends HttpServlet {
 		case "queryMember":
 			forwardPath = queryMember(req, res);
 			break;
+		case "userLogin":
+			forwardPath = userLogin(req, res);
+			break;
 		}
+		
+	}
+
+	private String userLogin(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+		res.setContentType("application/json; charset=UTF-8");
+		
+		String inputAccount = req.getParameter("inputAccount").trim();
+		String inputPassword = req.getParameter("inputPassword").trim();
+		
+		System.out.println(inputAccount);
+		System.out.println(inputPassword);
+		
+		// 查詢資料庫資料
+		MemberService memSvc = new MemberService();
+		List<Object[]> list = memSvc.findByAccount(inputAccount);
+
+		String memberPassword = "";
+		Integer memberId = null;
+
+		for (Object[] objs : list) {
+			memberPassword = String.valueOf(objs[0]);
+			memberId = (Integer) objs[1];
+		}
+		System.out.println("資料庫密碼:"+memberPassword);
+		System.out.println("資料庫ID:"+memberId);
+
+
+		// 檢查帳號
+		if (memberPassword == null) {
+			System.out.println("1:帳號或密碼錯誤");
+			
+			
+			return null;
+
+		} else if (memberPassword.equalsIgnoreCase(inputPassword)) {
+			System.out.println("登入成功");
+			MemberService memSLS = new MemberService();
+			MemberVO memVO = memSLS.getOneMember(memberId);
+			req.setAttribute("memVO", memVO);
+			
+			
+			return null;
+
+		} else {
+			System.out.println("2:帳號或密碼錯誤");
+			
+			
+			
+			return null;
+		}
+		
 		
 	}
 
@@ -44,7 +98,7 @@ public class MemberServlet extends HttpServlet {
 		String inputPhone = req.getParameter("memberPhone").trim();
 		String inputEmail = req.getParameter("memberEmail").trim();
 				
-		System.out.println(inputName);
+//		System.out.println(inputName);
 //		System.out.println(inputPhone);
 //		System.out.println(inputEmail);
 		if(!inputName.isEmpty()) {

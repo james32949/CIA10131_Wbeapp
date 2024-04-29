@@ -8,6 +8,8 @@ import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 public class MemberDAO implements MemberDAO_interface {
+	
+//	private HibernateTemolate 
 
 	@Override
 	public void insert(MemberVO memberVO) {
