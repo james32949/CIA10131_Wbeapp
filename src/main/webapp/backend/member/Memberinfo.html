@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+   <head>
+         
+         <!-- 基本設定 -->
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <!-- 移動設備基本設定 -->
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+         <!-- 網站 Meta 資訊 -->
+         <title>童樂渡假村 JoyfulResort</title>
+         <meta name="keywords" content="">
+         <meta name="description" content="">
+         <meta name="author" content="">
+         <!-- 引入 Bootstrap CSS -->
+         <link rel="stylesheet" href="./css/bootstrap.min.css">
+         <!-- 網站主要樣式表 -->
+         <link rel="stylesheet" href="./css/style.css">
+         <!-- 響應式樣式表 -->
+         <link rel="stylesheet" href="./css/responsive.css">
+         <!-- 網站圖標 -->
+         <link rel="icon" href="./images/fevicon.png" type="image/gif" />
+         <!-- 自定義滾動條樣式 -->
+         <link rel="stylesheet" href="./css/jquery.mCustomScrollbar.min.css">
+         <!-- 引入 Bootstrap 和 jQuery -->
+         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+         <link rel="stylesheet" href="./css/log.css">   
+         
+   </head>
+
+
+<body class="main-layout">  <!-- body 主體 -->
+    <div class="loader_bg">   <!-- 頁面加載動畫 -->
+      <div class="loader"><img src="images/loading.gif" alt="#"/></div>
+    </div>
+   
+    <header>    <!-- 頁面頭部 -->
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="index.html"><h1>童樂渡假村</h1></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              <li class="nav-item active">
+                                 <a class="nav-link" href="index.html">首頁</a>
+                                 <!-- 包含 關於我們 最新消息 媒體報導...  --> 
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="about.html">關於我們</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="room.html">飯店設施</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="gallery.html">線上訂房</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="blog.html">活動報名</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="contact.html">聯絡我們</a> 
+                                 <!-- 包含常見問題 -->
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" href="login.html">會員登入</a>
+                              </li>
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      <style>
+         #Memberinfo{
+            display: flex; 
+            justify-content: space-evenly; 
+            margin: 20px;
+            height: 800px;
+         }
+         aside{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            background-color: #F3F6F9;
+            border: 1px dotted #aaa;
+
+            width: 250px;
+         }
+         aside div#div_1{
+            display: flex;
+            justify-content: center;
+         }
+         aside #div_1_in{
+            border: 1px dotted black;
+            height: 100px;
+            width: 100px; 
+         }
+         aside div#div_2{
+            border: 1px dotted black;
+         }
+         aside div#div_3{
+            border: 1px dotted black;
+         }
+         aside div#div_3{
+            border: 1px dotted black;
+         }
+         aside div#div_4{
+            border: 1px dotted black;
+         }
+         aside div#div_5{
+            border: 1px dotted black;
+         }
+
+         aside div#div_6{
+            border: 1px dotted black;
+         }
+         main{
+            display: flex;
+            flex-direction: column;
+            background-color: #F3F6F9;
+            border: 1px dotted blue;
+            width: 70%;
+         }
+         #main_h1{
+            border: 1px dotted black;
+            height: 40px;
+            width: 50%;
+            margin: 20px;
+         }
+         main div#mainDiv_1{
+            display: flex;
+            border: 1px dotted black;
+            width: 90%;
+            height: 24%;
+            margin: 10px;
+         }
+         main div#mainDiv_1_1{
+            border: 1px dotted black;
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+         }
+         main div#mainDiv_1_2{
+            border: 1px dotted black;
+            width: 250px;
+            height: 150px;
+            margin: 10px;
+         }
+         main div#main_account{
+            border: 1px dotted black;
+            height: 50%;
+         }
+         main div#main_password{
+            border: 1px dotted black;
+            height: 50%;
+         }
+         main div#mainDiv_2{
+            border: 1px dotted black;
+            width: 90%;
+            height: 24%;
+            margin: 10px;
+
+         }
+
+      </style>
+    </header>   <!-- header結束 -->
+
+   <div id="Memberinfo"><!-- div區塊並排-->
+         <!--側邊攔 -->
+      <aside>
+         <div id="div_1"><!--會員圖像 -->
+            <div id="div_1_in">
+               <img width="100%" src ="${pageContext.request.contextPath}/DBReader?memberId=${memVO.memberId}">
+            </div>  
+         </div>
+
+         <div id="div_2"><!--個人資料-->
+            個人資料
+         </div>
+
+         <div id="div_3"><!--活動訂單-->
+            活動訂單
+         </div>
+
+         <div id="div_4"><!--住房訂單-->
+            住房訂單
+         </div>
+
+         <div id="div_5"><!--餐廳訂單-->
+            餐廳訂單
+         </div>
+
+         <div id="div_6"><!--會議廳訂單-->
+            會議廳訂單
+         </div>
+
+      </aside>
+
+      <!-- 主內容 -->
+      <main><!--我是main <h1>個人資料....做不完了TAT</h1> -->
+         <div id="main_h1"><h1>個人資料</h1></div>
+         
+         <div id="mainDiv_1">
+
+            <div id="mainDiv_1_1"><!-- 圖片 -->
+               <img width="100%" src ="${pageContext.request.contextPath}/DBReader?memberId=${memVO.memberId}">
+            </div>
+
+            <div id="mainDiv_1_2">
+               <div id="main_account">
+                  帳號
+               </div>
+               <div id="main_password">
+                  <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="名稱">
+               </div>
+               
+            </div>
+         </div>  
+
+         <div id="mainDiv_2">
+            <div style="height: 24%;">
+               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="信箱">
+            </div>
+
+            <div style="height: 24%;">
+               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="電話">
+            </div>
+
+            <div style="height: 24%;">
+               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="地址">
+            </div>
+
+            <div style="height: 24%;">
+               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="生日">
+            </div>
+               
+         </div> 
+
+      </main>
+   </div>
+
+
+   <footer> <!-- footer 開始 -->
+      <div class="footer">
+         <div class="container">
+            <div class="row">
+              
+            </div>
+         </div>
+         <!-- 版權聲明 -->
+         <div class="copyright">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-10 offset-md-1">
+                     <p>© 2019 All Rights Reserved. Design by <a href="https://html.design/">Free Html Templates</a><br><br>Distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- footer 結束 -->
+
+
+
+
+   <!-- Javascript 文件 -->
+   <script src="./js/jquery.min.js"></script>
+   <script src="js/jquery-3.0.0.min.js"></script> 
+   <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="./js/custom.js"></script>
+   <script src="./js/bootstrap.bundle.min.js"></script>
+   <!-- 側邊欄 -->
+
+   </body>
+   </html>

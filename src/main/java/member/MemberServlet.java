@@ -66,10 +66,11 @@ public class MemberServlet extends HttpServlet {
 
 
 		// 檢查帳號
-		if (memberPassword == null) {
+		if (memberPassword.isEmpty()) {
 			System.out.println("1:帳號或密碼錯誤");
-			
-			
+			JSONObject obj = new JSONObject();
+			obj.put("AccountState","error");
+			res.getWriter().print(obj);
 			return null;
 
 		} else if (memberPassword.equalsIgnoreCase(inputPassword)) {
@@ -83,9 +84,9 @@ public class MemberServlet extends HttpServlet {
 
 		} else {
 			System.out.println("2:帳號或密碼錯誤");
-			
-			
-			
+			JSONObject obj = new JSONObject();
+			obj.put("AccountState","error");
+			res.getWriter().print(obj);						
 			return null;
 		}
 		

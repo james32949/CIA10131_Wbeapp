@@ -31,7 +31,12 @@ $(document).on("click", "#loginButton", function(){
         },
         datatype:"json",
         success:function(data){
-          
+          if(data.AccountState === "error"){
+            $("#errorAccount, #errorPassword").css("display", "none")
+            $("#AccountState").css("display", "block")
+          } else if(data.AccountState === "pass"){
+            
+          }
         }
       })
   }
