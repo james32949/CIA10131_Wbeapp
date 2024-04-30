@@ -27,10 +27,14 @@ public class DBReader extends HttpServlet {
 
 		res.setContentType("image/gif");
 		ServletOutputStream out = res.getOutputStream();
+		
+		String id = req.getParameter("memberId").trim();
+//		System.out.println("DBReader:"+id);
 
 		try {
 			Statement stmt = con.createStatement();
-			String id = req.getParameter("memberId").trim();			
+//			String id = req.getParameter("memberId").trim();
+//			System.out.println("DBReader:"+id);
 			ResultSet rs = stmt.executeQuery("SELECT member_img FROM member WHERE member_id="+id);
 			if (rs.next()) {
 				BufferedInputStream in = new BufferedInputStream(rs.getBinaryStream("member_img"));

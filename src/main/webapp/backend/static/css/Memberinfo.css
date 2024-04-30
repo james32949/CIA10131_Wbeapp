@@ -1,0 +1,91 @@
+#Memberinfo{
+  display: flex; 
+  justify-content: space-evenly; 
+  margin: 20px;
+  height: 800px;
+}
+aside{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #F3F6F9;
+  border: 1px dotted #aaa;
+
+  width: 250px;
+}
+aside div#div_1{
+  display: flex;
+  justify-content: center;
+}
+aside #div_1_in{
+  flex-direction: column;
+  border: 1px dotted black;
+  height: 100px;
+  width: 100px; 
+}
+aside div#div_2{
+  border: 1px dotted black;
+}
+aside div#div_3{
+  border: 1px dotted black;
+}
+aside div#div_3{
+  border: 1px dotted black;
+}
+aside div#div_4{
+  border: 1px dotted black;
+}
+aside div#div_5{
+  border: 1px dotted black;
+}
+
+aside div#div_6{
+  border: 1px dotted black;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F6F9;
+  border: 1px dotted blue;
+  width: 70%;
+}
+#main_h1{
+  border: 1px dotted black;
+  height: 40px;
+  width: 50%;
+  margin: 20px;
+}
+main div#mainDiv_1{
+  display: flex;
+  border: 1px dotted black;
+  width: 90%;
+  height: 24%;
+  margin: 10px;
+}
+main div#mainDiv_1_1{
+  border: 1px dotted black;
+  width: 150px;
+  height: 150px;
+  margin: 10px;
+}
+main div#mainDiv_1_2{
+  border: 1px dotted black;
+  width: 80%;
+  height: 150px;
+  margin: 10px;
+}
+main div#main_account{
+  border: 1px dotted black;
+
+}
+main div#main_name{
+  border: 1px dotted black;
+
+}
+main div#mainDiv_2{
+  border: 1px dotted black;
+  width: 90%;
+  height: 24%;
+  margin: 5px;
+
+}

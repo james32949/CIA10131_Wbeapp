@@ -22,7 +22,7 @@
 
 	<context-param>
 		<param-name>connection.url</param-name>
-		<param-value>jdbc:mysql://localhost:3306/db01?serverTimezone=Asia/Taipei&amp;useSSL=false</param-value>
+		<param-value>jdbc:mysql://localhost:3306/joyfulresort?serverTimezone=Asia/Taipei&amp;useSSL=false</param-value>
 	</context-param>
 
 	<context-param>
@@ -52,17 +52,21 @@
 		<url-pattern>/QueryMember</url-pattern>
 	</servlet-mapping>
 	
-
 	
-<!-- 
-
-	<servlet>
-		<servlet-name>DBReader</servlet-name>
-		<servlet-class>member.controller.DBReader</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DBReader</servlet-name>
-		<url-pattern>/DBReader</url-pattern>
-	</servlet-mapping>
-  --> 
+	
+	
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>filters.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern>/backend/member/FilterTest1.html</url-pattern>
+		<url-pattern>/backend/member/Memberinfo.html</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
 </web-app>
