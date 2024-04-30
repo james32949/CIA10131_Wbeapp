@@ -12,8 +12,8 @@ $(document).on("click", "#loginButton", function(){
   let inputAccount = $("#floatingInput").val()
   let inputPassword = $("#floatingPassword").val()
 
-  console.log(inputAccount !== "")
-  console.log(inputPassword)
+  // console.log(inputAccount !== "")
+  // console.log(inputPassword)
 
   if(inputAccount === ""){
     $("#errorAccount").css("display", "block")
@@ -35,7 +35,8 @@ $(document).on("click", "#loginButton", function(){
             $("#errorAccount, #errorPassword").css("display", "none")
             $("#AccountState").css("display", "block")
           } else if(data.AccountState === "pass"){
-            
+            console.log("OK")
+            window.location.href = "/CIA10131_Webapp/backend/member/Memberinfo.html";
           }
         }
       })

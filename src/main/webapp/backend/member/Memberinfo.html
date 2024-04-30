@@ -30,6 +30,8 @@
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
          <link rel="stylesheet" href="./css/log.css">   
+
+         <link href="../static/css/Memberinfo.css" rel="stylesheet">
          
    </head>
 
@@ -80,7 +82,7 @@
                                  <!-- 包含常見問題 -->
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="login.html">會員登入</a>
+                                 <a id="logout" class="nav-link" href="Login.html">登出</a>
                               </li>
                            </ul>
                         </div>
@@ -90,99 +92,7 @@
             </div>
          </div>
 
-      <style>
-         #Memberinfo{
-            display: flex; 
-            justify-content: space-evenly; 
-            margin: 20px;
-            height: 800px;
-         }
-         aside{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            background-color: #F3F6F9;
-            border: 1px dotted #aaa;
 
-            width: 250px;
-         }
-         aside div#div_1{
-            display: flex;
-            justify-content: center;
-         }
-         aside #div_1_in{
-            border: 1px dotted black;
-            height: 100px;
-            width: 100px; 
-         }
-         aside div#div_2{
-            border: 1px dotted black;
-         }
-         aside div#div_3{
-            border: 1px dotted black;
-         }
-         aside div#div_3{
-            border: 1px dotted black;
-         }
-         aside div#div_4{
-            border: 1px dotted black;
-         }
-         aside div#div_5{
-            border: 1px dotted black;
-         }
-
-         aside div#div_6{
-            border: 1px dotted black;
-         }
-         main{
-            display: flex;
-            flex-direction: column;
-            background-color: #F3F6F9;
-            border: 1px dotted blue;
-            width: 70%;
-         }
-         #main_h1{
-            border: 1px dotted black;
-            height: 40px;
-            width: 50%;
-            margin: 20px;
-         }
-         main div#mainDiv_1{
-            display: flex;
-            border: 1px dotted black;
-            width: 90%;
-            height: 24%;
-            margin: 10px;
-         }
-         main div#mainDiv_1_1{
-            border: 1px dotted black;
-            width: 150px;
-            height: 150px;
-            margin: 10px;
-         }
-         main div#mainDiv_1_2{
-            border: 1px dotted black;
-            width: 250px;
-            height: 150px;
-            margin: 10px;
-         }
-         main div#main_account{
-            border: 1px dotted black;
-            height: 50%;
-         }
-         main div#main_password{
-            border: 1px dotted black;
-            height: 50%;
-         }
-         main div#mainDiv_2{
-            border: 1px dotted black;
-            width: 90%;
-            height: 24%;
-            margin: 10px;
-
-         }
-
-      </style>
     </header>   <!-- header結束 -->
 
    <div id="Memberinfo"><!-- div區塊並排-->
@@ -190,7 +100,7 @@
       <aside>
          <div id="div_1"><!--會員圖像 -->
             <div id="div_1_in">
-               <img width="100%" src ="${pageContext.request.contextPath}/DBReader?memberId=${memVO.memberId}">
+               <img id="memberImg" width="100%" src ="">
             </div>  
          </div>
 
@@ -223,35 +133,34 @@
          <div id="mainDiv_1">
 
             <div id="mainDiv_1_1"><!-- 圖片 -->
-               <img width="100%" src ="${pageContext.request.contextPath}/DBReader?memberId=${memVO.memberId}">
+               <img width="100%" src ="">
             </div>
 
             <div id="mainDiv_1_2">
-               <div id="main_account">
-                  帳號
+               <div id="main_account" class="input-group mb-3">
+                <span class="input-group-text">會員帳號</span><div>帳號:<span id="userId"></span></div>
                </div>
-               <div id="main_password">
-                  <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="名稱">
+               <div  id="main_name" class="input-group mb-3">
+               <span class="input-group-text">會員姓名</span><div><input type="text" class="form-control" id="userName" placeholder="名稱"></div>
                </div>
-               
             </div>
          </div>  
 
          <div id="mainDiv_2">
-            <div style="height: 24%;">
-               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="信箱">
+            <div class="input-group mb-3">
+               <span class="input-group-text">會員信箱</span><input type="text" class="form-control" id="userEmail" placeholder="信箱">
             </div>
 
-            <div style="height: 24%;">
-               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="電話">
+            <div class="input-group mb-3">
+               <span class="input-group-text">會員電話</span><input type="text" class="form-control" id="userPhone" placeholder="電話">
             </div>
 
-            <div style="height: 24%;">
-               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="地址">
+            <div class="input-group mb-3">
+               <span class="input-group-text">會員地址</span><input type="text" class="form-control" id="userAddress" placeholder="地址">
             </div>
 
-            <div style="height: 24%;">
-               <input type="text" class="form-control" id="floatingInput" name="memberAccount" placeholder="生日">
+            <div class="input-group mb-3">
+               <span class="input-group-text">會員生日</span><input type="text" class="form-control" id="userBirthday" placeholder="生日">
             </div>
                
          </div> 
@@ -285,11 +194,11 @@
 
 
    <!-- Javascript 文件 -->
-   <script src="./js/jquery.min.js"></script>
-   <script src="js/jquery-3.0.0.min.js"></script> 
+   <script src="../static/js/jquery-3.7.1.js"></script>
    <script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="./js/custom.js"></script>
    <script src="./js/bootstrap.bundle.min.js"></script>
+   <script src="../static/js/Memberinfo.js"></script>
    <!-- 側邊欄 -->
 
    </body>
